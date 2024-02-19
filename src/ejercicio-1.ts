@@ -30,8 +30,20 @@ class Articulo extends Gestor_de_Referncias_Bibliograficas{
        this.revista.push(revista);
        return;
    }
-   print():void
-   {
-     console.table(super.getrecopilacion()+this.revista,,this.volumen)
-   }
+   getrecopilacion(): trabajos {
+    const recopilacionPadre = super.getrecopilacion();
+    const recopilacionCompleta: trabajos = [];
+
+    for (const trabajo of recopilacionPadre) {
+        const trabajoCompleto: trabajo = [trabajo[0], trabajo[1], trabajo[2], trabajo[3], trabajo[4], trabajo[5], trabajo[6]];
+
+        recopilacionCompleta.push(trabajoCompleto);
+    }
+
+    return recopilacionCompleta;
+}
+print():void {
+  const recopilacionCompleta = this.getrecopilacion();
+  console.table(recopilacionCompleta.map(trabajo => [...trabajo, this.volumen[0], this.revista[0]]));
+}
 }
