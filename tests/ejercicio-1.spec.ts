@@ -4,13 +4,14 @@ import {TFG,TFM,Libro,Gestor_de_Referncias_Bibliograficas,Articulo} from "../src
 
 
 describe('Gestor_de_Referncias_Bibliograficas', () => {
-    it('should create a reference and retrieve it correctly', () => {
+    it('Todo correcto en Referncias_Bibliograficas', () => {
+        const fechaEsperada = new Date("2000-02-14");
         const referencia = new Gestor_de_Referncias_Bibliograficas(
             'Título',
             'Autor',
             ['Palabra1', 'Palabra2'],
             'Resumen',
-            new Date("18-02-2000"),
+            fechaEsperada,
             100,
             'Editorial'
         );
@@ -22,7 +23,7 @@ describe('Gestor_de_Referncias_Bibliograficas', () => {
         expect(recopilacion[0][1]).to.be.equal('Autor'); 
         expect(recopilacion[0][2]).to.deep.equal(['Palabra1', 'Palabra2']); 
         expect(recopilacion[0][3]).to.be.equal('Resumen'); 
-        expect(recopilacion[0][4]).to.be.equal("18-02-2000");
+        expect(recopilacion[0][4]).to.be.equal(fechaEsperada);
         expect(recopilacion[0][5]).to.be.equal(100);
         expect(recopilacion[0][6]).to.be.equal('Editorial');
     });
@@ -30,12 +31,13 @@ describe('Gestor_de_Referncias_Bibliograficas', () => {
 
 describe('Articulo', () => {
     it('should create an article reference and retrieve it correctly', () => {
+        const fechaEsperada = new Date("2000-02-14");
         const articulo = new Articulo(
             'Título',
             'Autor',
             ['Palabra1', 'Palabra2'],
             'Resumen',
-            new Date(),
+            fechaEsperada,
             100,
             'Editorial',
             'Volumen',
@@ -49,7 +51,7 @@ describe('Articulo', () => {
         expect(recopilacion[0][1]).to.be.equal('Autor'); 
         expect(recopilacion[0][2]).to.deep.equal(['Palabra1', 'Palabra2']); 
         expect(recopilacion[0][3]).to.be.equal('Resumen'); 
-        expect(recopilacion[0][4]).to.be.equal("18-02-2000");
+        expect(recopilacion[0][4]).to.be.equal(fechaEsperada);
         expect(recopilacion[0][5]).to.be.equal(100);
         expect(recopilacion[0][6]).to.be.equal('Editorial');
     });
