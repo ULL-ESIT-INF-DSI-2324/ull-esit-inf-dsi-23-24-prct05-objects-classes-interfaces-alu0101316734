@@ -1,5 +1,5 @@
-type dish = [number,number]
-type dishes = dish[]
+export type dish = [number,number]
+export type dishes = dish[]
 
 /**
  * 
@@ -11,7 +11,9 @@ interface menu_interface
    no_heath:number;
 }
 
-interface heurisitica_interface
+
+
+export interface heurisitica_interface
 {
   heurisitica(platos:dishes):dishes
 }
@@ -23,8 +25,35 @@ interface menu_solucion_interface
    logic():dishes
 }
 
+export class  Menu_solucion
+{
+   constructor(private Data_solucion:dishes)
+   {}
+   check_is_correct(data:dishes):boolean
+   {
+      if (this.Data_solucion.length !== data.length) {
+         // Si los arrays tienen longitudes diferentes, no son iguales
+         return false;
+     }
+ 
+     // Compara cada elemento de los arrays
+     for (let i = 0; i < this.Data_solucion.length; i++) {
+         if (!this.arraysAreEqual(this.Data_solucion[i], data[i])) {
+             // Si un elemento no coincide, los arrays no son iguales
+             return false;
+         }
+     }
+ 
+     // Si todos los elementos coinciden, los arrays son iguales
+     return true;
+   }
+// Método de la clase para comparar dos arrays
+private arraysAreEqual(arr1: dish, arr2: dish): boolean {
+   return arr1.every((value, index) => value === arr2[index]);
+}
+}
 
-class Menu_instance implements menu_interface{
+export class Menu_instance implements menu_interface{
    constructor(public  platos:dishes,public readonly no_heath:number)
    {
 
@@ -32,11 +61,11 @@ class Menu_instance implements menu_interface{
    ordenar_platos(algorithm:heurisitica_interface): dishes {
       let sol = new Solver(this.platos, algorithm);;
       this.platos=sol.logic();
-      this.platos.filter(dish => {
-         if(dish[1] >= this.no_heath )
-           return false;
-         else 
-          return true;
+      this.platos = this.platos.filter(dish => {
+      if(dish[1] > this.no_heath)
+         return false
+      else
+       return true
       })
       return this.platos;
    }
@@ -48,7 +77,7 @@ class Menu_instance implements menu_interface{
 
 
 
-class Solver implements menu_solucion_interface{
+export class Solver implements menu_solucion_interface{
    constructor(public readonly data:dishes,public tipo_heuristica:heurisitica_interface)
    {}
    logic(): dishes {
@@ -61,7 +90,7 @@ class Solver implements menu_solucion_interface{
 }
 
 
-class nutricion_decent implements heurisitica_interface
+export class nutricion_decent implements heurisitica_interface
 {
   heurisitica(platos:dishes): dishes {
      platos.sort((a,b) =>{return a[0] - b[0] })
@@ -70,7 +99,7 @@ class nutricion_decent implements heurisitica_interface
 }
 
 
-class unhealth_ascend implements heurisitica_interface
+export class unhealth_ascend implements heurisitica_interface
 {
   heurisitica(platos:dishes): dishes {
      platos.sort((a,b) =>{return b[1] - a[1] })
@@ -79,7 +108,7 @@ class unhealth_ascend implements heurisitica_interface
 }
 
 
-class racional_descend implements heurisitica_interface
+export class racional_descend implements heurisitica_interface
 {
   heurisitica(platos:dishes): dishes {
      platos.sort((a,b) =>{return (a[0]/a[1]) - (b[0]/b[1])})
