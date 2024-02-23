@@ -1,3 +1,8 @@
+/**
+ * __dado un tablero con 2 damas comprobar si se atacan__
+ * @param tablero El tablero a comprobar las damas
+ * @returns verdadero o falso si se atacan o los argumentos no son válidos
+ */
 export function checkatack(tablero: string[][]): boolean | undefined {
   let direccionx: number[] = [-1, -1, 1, 1];
   let direcciony: number[] = [-1, 1, -1, 1];
