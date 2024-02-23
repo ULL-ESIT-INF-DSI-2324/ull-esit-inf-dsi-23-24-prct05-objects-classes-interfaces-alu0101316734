@@ -42,6 +42,15 @@ export class Articulo extends Gestor_de_Referncias_Bibliograficas{
 
     return recopilacionCompleta;
 }
+getrevista():string[]
+{
+  return this.revista;
+}
+
+getvolumen():string[]
+{
+   return this.volumen;
+}
 print():void {
   const recopilacionCompleta = this.getrecopilacion();
   console.table(recopilacionCompleta.map(trabajo => [...trabajo, this.volumen[0], this.revista[0]]));
@@ -71,6 +80,12 @@ export class Congreso extends Gestor_de_Referncias_Bibliograficas{
  
      return recopilacionCompleta;
  }
+ getdia():Date[]
+{
+  return this.dia;
+}
+
+
  print():void {
    const recopilacionCompleta = this.getrecopilacion();
    console.table(recopilacionCompleta.map(trabajo => [...trabajo, this.dia]));
@@ -100,6 +115,12 @@ export class Congreso extends Gestor_de_Referncias_Bibliograficas{
  
      return recopilacionCompleta;
  }
+  getidiomas():string[][]
+  {
+    return this.idiomas;
+  }
+
+
  print():void {
    const recopilacionCompleta = this.getrecopilacion();
    console.table(recopilacionCompleta.map(trabajo => [...trabajo, this.idiomas]));
@@ -133,6 +154,15 @@ export class TFG extends Gestor_de_Referncias_Bibliograficas{
 
     return recopilacionCompleta;
 }
+getgrado():string[]
+{
+  return this.Grado;
+}
+
+getvolumen():string[]
+{
+   return this.Departamento;
+}
 print():void {
   const recopilacionCompleta = this.getrecopilacion();
   console.table(recopilacionCompleta.map(trabajo => [...trabajo, this.Grado, this.Departamento]));
@@ -163,11 +193,22 @@ export class TFM extends Gestor_de_Referncias_Bibliograficas{
  
          recopilacionCompleta.push(trabajoCompleto);
      }
- 
+  
      return recopilacionCompleta;
  }
+ getPostgrado():string[]
+{
+  return this.PostGrado;
+}
+
+getvolumen():string[]
+{
+   return this.Departamento;
+}
  print():void {
    const recopilacionCompleta = this.getrecopilacion();
    console.table(recopilacionCompleta.map(trabajo => [...trabajo, this.PostGrado, this.Departamento]));
  }
  }
+
+ 
