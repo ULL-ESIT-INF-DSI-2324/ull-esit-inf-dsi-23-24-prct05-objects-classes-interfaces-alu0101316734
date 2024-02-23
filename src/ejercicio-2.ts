@@ -32,22 +32,22 @@ export class  Menu_solucion
    check_is_correct(data:dishes):boolean
    {
       if (this.Data_solucion.length !== data.length) {
-         // Si los arrays tienen longitudes diferentes, no son iguales
+
          return false;
      }
  
-     // Compara cada elemento de los arrays
+ 
      for (let i = 0; i < this.Data_solucion.length; i++) {
          if (!this.arraysAreEqual(this.Data_solucion[i], data[i])) {
-             // Si un elemento no coincide, los arrays no son iguales
+
              return false;
          }
      }
  
-     // Si todos los elementos coinciden, los arrays son iguales
+
      return true;
    }
-// Método de la clase para comparar dos arrays
+
 private arraysAreEqual(arr1: dish, arr2: dish): boolean {
    return arr1.every((value, index) => value === arr2[index]);
 }
