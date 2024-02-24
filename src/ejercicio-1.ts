@@ -167,7 +167,9 @@ export class Congreso extends Gestor_de_Referncias_Bibliograficas{
  * @class En esta clase se almacena los trabajo finales de fin de grado
  */
 export class TFG extends Gestor_de_Referncias_Bibliograficas{
+  /** @private */
    private Grado:string[] = [];
+   /** @private */
    private Departamento:string[] =[];
    constructor(readonly titulo: string, readonly autor: string,readonly palabras_claves: string[], readonly resumen: string,readonly fecha: Date,readonly n_paginas: number,readonly editorial: string,Departamento:string,Grado:string){
      super(titulo,autor,palabras_claves,resumen,fecha,n_paginas,editorial);
