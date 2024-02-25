@@ -75,7 +75,7 @@ export class Menu_instance implements menu_interface{
    }
    /** @public */
    ordenar_platos(algorithm:heurisitica_interface): dishes {
-      let sol = new Solver(this.platos, algorithm);;
+      let sol = new Solver(this.platos, algorithm);
       this.platos=sol.logic();
       this.platos = this.platos.filter(dish => {
       if(dish[1] > this.no_heath)
